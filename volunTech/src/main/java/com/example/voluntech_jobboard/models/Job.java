@@ -43,12 +43,13 @@ public class Job {
     @JsonIgnoreProperties({"jobs"})
     private List<Volunteer> volunteers;
 
-    public Job(String role, String description, LocalDate startDate, LocalDate endDate, String location) {
+    public Job(String role, String description, LocalDate startDate, LocalDate endDate, String location, Charity charity) {
         this.role = role;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
+        this.charity = charity;
         this.volunteers = new ArrayList<>();
     }
 
@@ -57,6 +58,8 @@ public class Job {
     public List<Volunteer> getVolunteers() {
         return volunteers;
     }
+
+
 
     public void setVolunteers(List<Volunteer> volunteers) {
         this.volunteers = volunteers;

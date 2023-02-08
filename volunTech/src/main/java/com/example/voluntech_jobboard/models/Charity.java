@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 @Entity
 @Table (name = "charities")
 public class Charity {
@@ -29,14 +27,12 @@ public class Charity {
     @JsonIgnoreProperties({"charity"})
     private List<Job> jobs;
 
-
     public Charity(String name, String description, String charityCause) {
         this.name = name;
         this.description = description;
         this.charityCause = charityCause;
         this.jobs = new ArrayList<>();
     }
-
 
     public Charity () {}
 
@@ -80,17 +76,12 @@ public class Charity {
         this.jobs = jobs;
     }
 
-    // Methods
+    public void addJob(Job job){
+        this.jobs.add(job);
+    }
 
-//    public void addCharity(Charity charity) {
-//
-//    }
+    public void removeJob(Job job){
+        this.jobs.remove(job);
+    }
 
-//    public void removeCharity() {
-//
-//    }
-
-//    public List getAllCharities<Charity>() {
-//
-//    }
 }

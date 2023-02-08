@@ -5,10 +5,12 @@ public class ApplicationDTO {
     private Long volunteerId;
 
     private Long jobId;
+    private Long charityId;
 
-    public ApplicationDTO(Long volunteerId, Long jobId){
+    public ApplicationDTO(Long volunteerId, Long jobId, Long charityId){
         this.volunteerId = volunteerId;
         this.jobId = jobId;
+        this.charityId = charityId;
     }
 
     public ApplicationDTO(){
@@ -30,5 +32,11 @@ public class ApplicationDTO {
         this.jobId = jobId;
     }
 
+    public Long getCharityId() {
+        return charityId;
+    }
 
+    public void setCharityId(Long charityId) {
+        this.charityId = charityId;
+    }
 }
