@@ -3,6 +3,7 @@ package com.example.voluntech_jobboard.services;
 import com.example.voluntech_jobboard.models.ApplicationDTO;
 import com.example.voluntech_jobboard.models.Job;
 import com.example.voluntech_jobboard.models.Volunteer;
+import com.example.voluntech_jobboard.repositories.CharityRepository;
 import com.example.voluntech_jobboard.repositories.JobRepository;
 import com.example.voluntech_jobboard.repositories.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ import java.util.Optional;
 
 @Service
 public class VolunteerService {
+
+
+    @Autowired
+    CharityRepository charityRepository;
 
     @Autowired
     VolunteerRepository volunteerRepository;

@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table (name = "volunteer")
 public class Volunteer {
 
     @Id

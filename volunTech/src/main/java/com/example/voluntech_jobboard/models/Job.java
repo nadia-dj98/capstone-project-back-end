@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "job")
+@Table (name = "jobs")
 public class Job {
 
     @Id
@@ -40,7 +40,7 @@ public class Job {
             joinColumns = @JoinColumn(name = "job_id"),
             inverseJoinColumns =@JoinColumn(name = "volunteer_id")
     )
-@JsonIgnoreProperties({"jobs"})
+    @JsonIgnoreProperties({"jobs"})
     private List<Volunteer> volunteers;
 
     public Job(String role, String description, LocalDate startDate, LocalDate endDate, String location) {
@@ -52,6 +52,8 @@ public class Job {
         this.volunteers = new ArrayList<>();
     }
 
+
+    public Job () {}
     public List<Volunteer> getVolunteers() {
         return volunteers;
     }

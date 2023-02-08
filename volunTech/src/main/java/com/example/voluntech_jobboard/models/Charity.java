@@ -1,15 +1,17 @@
 package com.example.voluntech_jobboard.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+@Entity
+@Table (name = "charities")
 public class Charity {
 
     @Id
@@ -26,6 +28,7 @@ public class Charity {
     private String charityCause;
 
     @OneToMany(mappedBy = "charity")
+    @JsonIgnoreProperties({"charity"})
     private List<Job> jobs;
 
 
@@ -35,6 +38,9 @@ public class Charity {
         this.charityCause = charityCause;
         this.jobs = new ArrayList<>();
     }
+
+
+    public Charity () {}
 
     public Long getId() {
         return id;
