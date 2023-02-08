@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Volunteer {
 
@@ -18,9 +19,9 @@ public class Volunteer {
     @Column(name = "experience")
     private Experience experience;
 
-    @ManyToMany(mappedBy = "volunteer")
-    @JsonIgnoreProperties({"volunteer"})
-    private List <Job> jobs;
+    @ManyToMany(mappedBy = "volunteers")
+    @JsonIgnoreProperties({"volunteers"})
+    private List<Job> jobs;
 
     public Volunteer(String name, Experience experience) {
         this.name = name;

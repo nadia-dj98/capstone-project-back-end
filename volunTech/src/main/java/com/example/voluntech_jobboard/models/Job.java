@@ -3,6 +3,9 @@ package com.example.voluntech_jobboard.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table (name = "job")
 public class Job {
@@ -32,14 +35,24 @@ public class Job {
     @JoinTable(name = "application",
             joinColumns = @JoinColumn(name = "job_id"),
             inverseJoinColumns =@JoinColumn(name = "volunteer_id")
-
     )
+@JsonIgnoreProperties({"jobs"})
+    private List<Volunteer> volunteers;
 
     public Job(String role, String description,Integer duration, String location) {
         this.role = role;
         this.description = description;
         this.duration = duration;
         this.location = location;
+        this.volunteers = new ArrayList<>();
+    }
+
+    public List<Volunteer> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<Volunteer> volunteers) {
+        this.volunteers = volunteers;
     }
 
     public Long getId() {
