@@ -3,6 +3,7 @@ package com.example.voluntech_jobboard.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +21,11 @@ public class Job {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "duration")
-    private Integer duration;
+    @Column(name = "startDate")
+    private LocalDate startDate;
+
+    @Column(name = "endDate")
+    private LocalDate endDate;
 
     @Column(name= "location")
     private  String location;
@@ -39,10 +43,11 @@ public class Job {
 @JsonIgnoreProperties({"jobs"})
     private List<Volunteer> volunteers;
 
-    public Job(String role, String description,Integer duration, String location) {
+    public Job(String role, String description, LocalDate startDate, LocalDate endDate, String location) {
         this.role = role;
         this.description = description;
-        this.duration = duration;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.location = location;
         this.volunteers = new ArrayList<>();
     }
@@ -79,12 +84,21 @@ public class Job {
         this.description = description;
     }
 
-    public Integer getDuration() {
-        return duration;
+
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public String getLocation() {

@@ -7,10 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VoluntechApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VoluntechApplication.class, args);
-
-		System.out.println("hello world!");
-	}
+		SpringApplication.run(VoluntechApplication.class, args);}
 
 
 }

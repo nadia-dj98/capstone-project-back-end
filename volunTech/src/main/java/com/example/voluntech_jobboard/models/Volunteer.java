@@ -50,7 +50,7 @@ public class Volunteer {
         this.name = name;
     }
 
-    public Enum getExperience() {
+    public Experience getExperience() {
         return experience;
     }
 
