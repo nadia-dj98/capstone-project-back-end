@@ -18,7 +18,7 @@ public class Job {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "startDate")
