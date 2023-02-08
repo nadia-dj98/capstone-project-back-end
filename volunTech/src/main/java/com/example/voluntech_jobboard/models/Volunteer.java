@@ -65,4 +65,12 @@ public class Volunteer {
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
+
+    public void applyToJob(Job job){
+        this.jobs.add(job);
+    }
+
+    public void withdrawFromJob(Job job){
+        this.jobs.remove(job);
+    }
 }

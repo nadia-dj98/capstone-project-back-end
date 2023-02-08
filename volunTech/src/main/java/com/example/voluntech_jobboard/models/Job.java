@@ -102,5 +102,7 @@ public class Job {
     public void setCharity(Charity charity) {
         this.charity = charity;
     }
+
+
 }
 
