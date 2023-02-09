@@ -36,7 +36,7 @@ public class CharityController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteCharity(@PathVariable long id) {
-        charityService.removeCharity(id);
+        charityService.deleteCharity(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 

@@ -23,8 +23,8 @@ public class CharityService {
         charityRepository.save(charity);
     }
 
-    public void removeCharity(Charity charity){
-        charityRepository.delete(charity);
+    public void deleteCharity(Long id){
+        charityRepository.deleteById(id);
     }
 
     public List<Charity> getAllCharities(){
