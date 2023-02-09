@@ -53,8 +53,8 @@ public class VolunteerController {
       }
 
       // Update volunteer by id
-      // TODO id returns 0
-    @PatchMapping(value = "/{id}")
+
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Volunteer> updateVolunteer(@RequestBody Volunteer volunteer, @PathVariable Long id){
         volunteerService.updateVolunteer(volunteer, id);
         Optional<Volunteer>updateVolunteer = volunteerService.getVolunteerById(id);

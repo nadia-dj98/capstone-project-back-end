@@ -1,6 +1,7 @@
 package com.example.voluntech_jobboard.Controllers;
 
 import com.example.voluntech_jobboard.models.Job;
+import com.example.voluntech_jobboard.models.Volunteer;
 import com.example.voluntech_jobboard.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,6 +49,12 @@ public class JobController {
     public ResponseEntity<Long> deleteJob(@PathVariable long id){
         jobService.deleteJob(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
+    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Job> updateJob(@RequestBody Job job, @PathVariable Long id){
+        jobService.updateJob(job, id);
+        Optional<Job>updateJob = jobService.getJobById(id);
+        return new ResponseEntity<>(updateJob.get(), HttpStatus.OK);
     }
 
 }
