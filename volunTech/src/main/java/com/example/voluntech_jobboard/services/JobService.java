@@ -18,9 +18,7 @@ public class JobService {
         jobRepository.save(job);
     }
 
-    public void removeJob(Job job){
-        jobRepository.delete(job);
-    }
+    public void deleteJob(Long id ){jobRepository.deleteById(id);}
 
     public Optional<Job> getJobById(Long id){
         return jobRepository.findById(id);
