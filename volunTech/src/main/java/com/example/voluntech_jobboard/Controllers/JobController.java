@@ -44,14 +44,11 @@ public class JobController {
     }
 
     //delete job
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<Long> removeJobById(@PathVariable long id){
-//        jobService.removeJobById(id);
-//        return new ResponseEntity<>(id, HttpStatus.OK);
-//    }
-
-
-
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Long> removeJobById(@PathVariable long id){
+        jobService.removeJobById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 
 
 }
