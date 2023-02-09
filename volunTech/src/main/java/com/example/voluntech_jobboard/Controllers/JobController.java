@@ -37,9 +37,6 @@ public class JobController {
         }
     }
 
-    //add new job
-
-
     //delete job
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteJob(@PathVariable long id){

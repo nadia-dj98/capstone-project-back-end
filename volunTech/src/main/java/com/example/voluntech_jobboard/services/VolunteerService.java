@@ -48,15 +48,24 @@ public class VolunteerService {
         volunteerRepository.deleteById(id);
     }
 
-    //adding job object to jobs arraylist in Volunteer
-    public void applyToJob(ApplicationDTO applicationDTO){
-        Long volunteerId = applicationDTO.getVolunteerId();
-        Long jobId = applicationDTO.getJobId();
+    // adding job object to jobs arraylist in Volunteer
+    //TODO -- first "applyToJob" method does not work
+    public Volunteer applyToJob(Long volunteerId, Long jobId){
         Volunteer volunteer = volunteerRepository.findById(volunteerId).get();
         Job job = jobRepository.findById(jobId).get();
-        volunteer.applyToJob(job);
+        List<Job> jobs = volunteer.getJobs();
+        jobs.add(job);
+        volunteer.setJobs(jobs);
         volunteerRepository.save(volunteer);
+        return volunteer;
+    }
 
+    //TODO -- second "applyToJob" method does not work
+    public void applyToJob(Job job, Volunteer volunteer){
+        List<Job> jobs = volunteer.getJobs();
+        jobs.add(job);
+        volunteer.setJobs(jobs);
+        volunteerRepository.save(volunteer);
     }
 
     public void withdrawFromJob(ApplicationDTO applicationDTO){
@@ -68,5 +77,5 @@ public class VolunteerService {
         volunteerRepository.save(volunteer);
     }
 
-    }
+}
 

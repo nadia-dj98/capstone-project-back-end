@@ -3,7 +3,6 @@ package com.example.voluntech_jobboard.models;
 public class ApplicationDTO {
 
     private Long volunteerId;
-
     private Long jobId;
     private Long charityId;
 

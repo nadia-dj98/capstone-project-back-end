@@ -17,9 +17,9 @@ public class JobService {
     @Autowired
     JobRepository jobRepository;
 
-
     @Autowired
     CharityRepository charityRepository;
+
     public void addJob(Job job, long charityId){
         //change to if present
         Charity charity = charityRepository.findById(charityId).get();
