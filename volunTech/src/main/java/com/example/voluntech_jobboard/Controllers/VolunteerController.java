@@ -57,7 +57,8 @@ public class VolunteerController {
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Volunteer> updateVolunteer(@RequestBody Volunteer volunteer, @PathVariable Long id){
         volunteerService.updateVolunteer(volunteer, id);
-        return new ResponseEntity<>(volunteer, HttpStatus.OK);
+        Optional<Volunteer>updateVolunteer = volunteerService.getVolunteerById(id);
+        return new ResponseEntity<>(updateVolunteer.get(), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
@@ -67,4 +68,5 @@ public class VolunteerController {
     }
 
 }
+
 
