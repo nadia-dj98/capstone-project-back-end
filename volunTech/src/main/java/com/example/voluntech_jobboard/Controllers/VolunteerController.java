@@ -27,22 +27,6 @@ public class VolunteerController {
     @Autowired
     JobService jobService;
 
-    //add Volunteer
-    @PostMapping
-    public ResponseEntity<Volunteer> addNewVolunteer(@RequestBody Volunteer volunteer){
-         volunteerService.addVolunteer(volunteer);
-        return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
-    }
-
-    //Add job to volunteer
-    //TODO -- method does not work yet
-    @PutMapping (value = "/{volunteerId}/jobs/{jobId}")
-    public ResponseEntity<Volunteer> addJobToVolunteer(@PathVariable Long volunteerId, @RequestBody Long jobId) {
-        Job job = jobService.getJobById(jobId).get();
-        Volunteer volunteer = volunteerService.getVolunteerById(volunteerId).get();
-        Volunteer updatedVolunteer = volunteerService.applyToJob(job, );
-        return new ResponseEntity<>(updatedVolunteer, HttpStatus.OK);
-    }
 
     //Get all volunteers
     @GetMapping
@@ -51,7 +35,7 @@ public class VolunteerController {
         return new ResponseEntity<>(allVolunteers, HttpStatus.OK);
     }
 
-    //Get volunteers by ID
+    //Get volunteer by ID
     @GetMapping(value = "/{id}")
     public ResponseEntity <Volunteer> getVolunteerById(@PathVariable long id){
         Optional<Volunteer> volunteer = volunteerService.getVolunteerById(id);
@@ -63,6 +47,14 @@ public class VolunteerController {
         }
       }
 
+    //create new volunteer
+    @PostMapping
+    public ResponseEntity<Volunteer> addNewVolunteer(@RequestBody Volunteer volunteer){
+        volunteerService.addVolunteer(volunteer);
+        return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
+    }
+
+
       // Update volunteer by id
 //    @PutMapping(value = "/{id}")
 //    public ResponseEntity<Volunteer> updateVolunteer(@RequestBody Volunteer volunteer, @PathVariable Long id){
@@ -71,6 +63,18 @@ public class VolunteerController {
 //        return new ResponseEntity<>(updateVolunteer.get(), HttpStatus.OK);
 //    }
 
+
+    //Add job to volunteer
+    //TODO -- method does not work yet
+    @PutMapping (value = "/{volunteerId}/jobs/{jobId}")
+    public ResponseEntity<Volunteer> addJobToVolunteer(@PathVariable Long volunteerId, @RequestBody Long jobId) {
+        Job job = jobService.getJobById(jobId).get();
+        Volunteer volunteer = volunteerService.getVolunteerById(volunteerId).get();
+        Volunteer updatedVolunteer = volunteerService.applyToJob(job, );
+        return new ResponseEntity<>(updatedVolunteer, HttpStatus.OK);
+    }
+
+    //delete volunteer
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteVolunteer(@PathVariable Long id){
         volunteerService.deleteVolunteer(id);

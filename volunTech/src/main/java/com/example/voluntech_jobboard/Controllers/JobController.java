@@ -18,14 +18,14 @@ public class JobController {
     @Autowired
     JobService jobService;
 
-    //GET all jobs
+    //Get all jobs
     @GetMapping
     public ResponseEntity<List<Job>> getAllJobs(){
         List<Job> allJobs = jobService.getAllJobs();
         return new ResponseEntity<>(allJobs, HttpStatus.OK);
     }
 
-    //GET jobs by id
+    //Get jobs by id
     @GetMapping(value = "/{id}")
     public ResponseEntity<Job>getJobById(@PathVariable long id){
         Optional<Job> job = jobService.getJobById(id);
@@ -37,17 +37,20 @@ public class JobController {
         }
     }
 
-    //delete job
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteJob(@PathVariable long id){
-        jobService.deleteJob(id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
-    }
+    //update job
     @PutMapping(value = "/{id}")
     public ResponseEntity<Job> updateJob(@RequestBody Job job, @PathVariable Long id){
         jobService.updateJob(job, id);
         Optional<Job>updateJob = jobService.getJobById(id);
         return new ResponseEntity<>(updateJob.get(), HttpStatus.OK);
     }
+
+    //delete job
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Long> deleteJob(@PathVariable long id){
+        jobService.deleteJob(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
+
 
 }
