@@ -52,6 +52,19 @@ public class VolunteerController {
         }
       }
 
+      // Update volunteer by id
+      // TODO id returns 0
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Volunteer> updateVolunteer(@RequestBody Volunteer volunteer, @PathVariable Long id){
+        volunteerService.updateVolunteer(volunteer, id);
+        return new ResponseEntity<>(volunteer, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Long> deleteVolunteer(@PathVariable Long id){
+        volunteerService.deleteVolunteer(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 
 }
 
