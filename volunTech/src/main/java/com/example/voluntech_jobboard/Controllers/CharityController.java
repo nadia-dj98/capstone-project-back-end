@@ -39,13 +39,22 @@ public class CharityController {
         return new ResponseEntity<>(charity, HttpStatus.CREATED);
     }
 
-    //add new job to charity
+    //create new job to charity
     //path variable = charity id
     @PostMapping(value = "/{id}/jobs")
     public ResponseEntity<Job> addNewJob(@RequestBody Job job, @PathVariable long id){
         jobService.addJob(job, id);
         job.setVolunteers(new ArrayList<>());
         return new ResponseEntity<>(job, HttpStatus.CREATED);
+    }
+
+
+    //update charity
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Charity> updateCharity(@RequestBody Charity charity, @PathVariable Long id){
+        charityService.updateCharity(charity, id);
+        Optional<Charity> updateCharity = charityService.getCharitiesById(id);
+        return new ResponseEntity<>(updateCharity.get(), HttpStatus.OK);
     }
 
 
@@ -58,22 +67,5 @@ public class CharityController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-    //update charity
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Charity> updateCharity(@RequestBody Charity charity, @PathVariable Long id){
-        charityService.updateCharity(charity, id);
-        Optional<Charity> updateCharity = charityService.getCharitiesById(id);
-        return new ResponseEntity<>(updateCharity.get(), HttpStatus.OK);
-    }
 
 }
