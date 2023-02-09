@@ -13,7 +13,7 @@ import com.example.voluntech_jobboard.services.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
