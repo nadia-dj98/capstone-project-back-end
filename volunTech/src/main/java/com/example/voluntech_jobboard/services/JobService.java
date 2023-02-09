@@ -1,7 +1,9 @@
 package com.example.voluntech_jobboard.services;
 
+import com.example.voluntech_jobboard.models.Charity;
 import com.example.voluntech_jobboard.models.Job;
 import com.example.voluntech_jobboard.models.Volunteer;
+import com.example.voluntech_jobboard.repositories.CharityRepository;
 import com.example.voluntech_jobboard.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,13 @@ public class JobService {
     @Autowired
     JobRepository jobRepository;
 
-    public void addJob(Job job){
+
+    @Autowired
+    CharityRepository charityRepository;
+    public void addJob(Job job, long charityId){
+        //change to if present
+        Charity charity = charityRepository.findById(charityId).get();
+        job.setCharity(charity);
         jobRepository.save(job);
     }
 
