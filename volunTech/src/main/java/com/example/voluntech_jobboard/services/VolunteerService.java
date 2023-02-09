@@ -37,6 +37,17 @@ public class VolunteerService {
         return volunteerRepository.findById(id);
     }
 
+    public void updateVolunteer(Volunteer volunteer, Long id){
+        Volunteer volunteerToUpdate = volunteerRepository.findById(id).get();
+        volunteerToUpdate.setName(volunteer.getName());
+        volunteerToUpdate.setExperience(volunteer.getExperience());
+        volunteerRepository.save(volunteerToUpdate);
+    }
+
+    public void deleteVolunteer(Long id) {
+        volunteerRepository.deleteById(id);
+    }
+
     //adding job object to jobs arraylist in Volunteer
     public void applyToJob(ApplicationDTO applicationDTO){
         Long volunteerId = applicationDTO.getVolunteerId();
