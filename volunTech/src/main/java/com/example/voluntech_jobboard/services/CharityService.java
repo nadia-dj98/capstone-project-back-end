@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CharityService {
@@ -31,6 +32,10 @@ public class CharityService {
         return charityRepository.findAll();
     }
 
+    public Optional<Charity> getCharitiesById(Long id){
+        return charityRepository.findById(id);
+    }
+
     public void addJob(ApplicationDTO applicationDTO){
         Long charityId = applicationDTO.getCharityId();
         Long jobId = applicationDTO.getJobId();
@@ -47,5 +52,13 @@ public class CharityService {
         Job job = jobRepository.findById(jobId).get();
         charity.removeJob(job);
         charityRepository.save(charity);
+    }
+
+    public void updateCharity(Charity charity, Long id){
+        Charity charityToUpdate = charityRepository.findById(id).get();
+        charityToUpdate.setName(charity.getName());
+        charityToUpdate.setDescription(charity.getDescription());
+        charityToUpdate.setCharityCause(charity.getCharityCause());
+        charityRepository.save(charityToUpdate);
     }
 }
