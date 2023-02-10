@@ -1,15 +1,18 @@
 package com.example.voluntech_jobboard.models;
 
+
+
 public class ApplicationDTO {
+
 
     private Long volunteerId;
     private Long jobId;
     private Long charityId;
 
-    public ApplicationDTO(Long volunteerId, Long jobId, Long charityId){
+    public ApplicationDTO(Long volunteerId, Long jobId){
         this.volunteerId = volunteerId;
         this.jobId = jobId;
-        this.charityId = charityId;
+//        this.charityId = charityId;
     }
 
     public ApplicationDTO(){

@@ -25,6 +25,8 @@ public class VolunteerService {
     @Autowired
     JobRepository jobRepository;
 
+
+
     public List<Volunteer> getAllVolunteers(){
         return volunteerRepository.findAll();
     }
@@ -50,23 +52,41 @@ public class VolunteerService {
 
     // adding job object to jobs arraylist in Volunteer
     //TODO -- first "applyToJob" method does not work
-    public Volunteer applyToJob(Long volunteerId, Long jobId){
+//    public Volunteer applyToJob(Long volunteerId, Long jobId){
+//        Volunteer volunteer = volunteerRepository.findById(volunteerId).get();
+//        Job job = jobRepository.findById(jobId).get();
+//        List<Job> jobs = volunteer.getJobs();
+//        jobs.add(job);
+//        volunteer.setJobs(jobs);
+//        volunteerRepository.save(volunteer);
+//        return volunteer;
+//    }
+//
+//    //TODO -- second "applyToJob" method does not work
+//    public void applyToJob(Job job, Volunteer volunteer){
+//        List<Job> jobs = volunteer.getJobs();
+//        jobs.add(job);
+//        volunteer.setJobs(jobs);
+//        volunteerRepository.save(volunteer);
+//    }
+
+    //volunteer adds job to their job array
+    //job exists
+    //get job from array through its id
+    //then add to their array list
+
+    public void  applyToJob(Long jobId, Long volunteerId) {
+
+        Job jobToApplyTo = jobRepository.findById(jobId).get();
         Volunteer volunteer = volunteerRepository.findById(volunteerId).get();
-        Job job = jobRepository.findById(jobId).get();
-        List<Job> jobs = volunteer.getJobs();
-        jobs.add(job);
-        volunteer.setJobs(jobs);
-        volunteerRepository.save(volunteer);
-        return volunteer;
+        List<Volunteer> jobVolunteers = jobToApplyTo.getVolunteers();
+        jobVolunteers.add(volunteer);
+        jobToApplyTo.setVolunteers(jobVolunteers);
+        jobRepository.save(jobToApplyTo);
+
     }
 
-    //TODO -- second "applyToJob" method does not work
-    public void applyToJob(Job job, Volunteer volunteer){
-        List<Job> jobs = volunteer.getJobs();
-        jobs.add(job);
-        volunteer.setJobs(jobs);
-        volunteerRepository.save(volunteer);
-    }
+
 
     public void withdrawFromJob(ApplicationDTO applicationDTO){
         Long volunteerId = applicationDTO.getVolunteerId();

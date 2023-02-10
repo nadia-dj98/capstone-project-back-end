@@ -48,11 +48,11 @@ public class VolunteerController {
       }
 
     //create new volunteer
-    @PostMapping
-    public ResponseEntity<Volunteer> addNewVolunteer(@RequestBody Volunteer volunteer){
-        volunteerService.addVolunteer(volunteer);
-        return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
-    }
+//    @PostMapping
+//    public ResponseEntity<Volunteer> addNewVolunteer(@RequestBody Volunteer volunteer){
+//        volunteerService.addVolunteer(volunteer);
+//        return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
+//    }
 
 
       // Update volunteer by id
@@ -66,12 +66,12 @@ public class VolunteerController {
 
     //Add job to volunteer
     //TODO -- method does not work yet
-    @PutMapping (value = "/{volunteerId}/jobs/{jobId}")
-    public ResponseEntity<Volunteer> addJobToVolunteer(@PathVariable Long volunteerId, @RequestBody Long jobId) {
-        Job job = jobService.getJobById(jobId).get();
-        Volunteer volunteer = volunteerService.getVolunteerById(volunteerId).get();
-        Volunteer updatedVolunteer = volunteerService.applyToJob(job, );
-        return new ResponseEntity<>(updatedVolunteer, HttpStatus.OK);
+    @PostMapping (value = "/{jobId}/{volunteerId}")
+    public ResponseEntity<String> applyToJob (@PathVariable Long jobId, @PathVariable Long volunteerId) {
+        volunteerService.applyToJob(jobId, volunteerId);
+        System.out.println(jobId);
+        System.out.println(volunteerId);
+        return new ResponseEntity<>("Application successful", HttpStatus.OK);
     }
 
     //delete volunteer
