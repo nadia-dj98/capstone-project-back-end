@@ -20,10 +20,15 @@ public class JobController {
 
     //Get all jobs
     @GetMapping
-    public ResponseEntity<List<Job>> getAllJobs(){
-        List<Job> allJobs = jobService.getAllJobs();
-        return new ResponseEntity<>(allJobs, HttpStatus.OK);
+    public ResponseEntity<List<Job>> getAllJobsOrFilterByLocation(
+            @RequestParam(required = false, value= "location")String location){
+        if (location != null) {
+    return new ResponseEntity<>(jobService.findByLocation(location), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(jobService.getAllJobs(), HttpStatus.OK);
     }
+
+
 
     //Get jobs by id
     @GetMapping(value = "/{id}")
