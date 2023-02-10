@@ -24,8 +24,19 @@ public class VolunteerController {
     @Autowired
     VolunteerService volunteerService;
 
-    @Autowired
-    JobService jobService;
+    //creating a new volunteer
+    @PostMapping
+    public ResponseEntity<Volunteer> addNewVolunteer(@RequestBody Volunteer volunteer){
+        volunteerService.addVolunteer(volunteer);
+        return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
+    }
+
+    //add volunteer to job (apply to job)
+    @PostMapping (value = "/{jobId}/{volunteerId}")
+    public ResponseEntity<String> applyToJob (@PathVariable Long jobId, @PathVariable Long volunteerId) {
+        volunteerService.applyToJob(jobId, volunteerId);
+        return new ResponseEntity<>("Application successful", HttpStatus.OK);
+    }
 
     //get all volunteers
     @GetMapping
@@ -46,14 +57,7 @@ public class VolunteerController {
         }
       }
 
-      //create a new volunteer
-    @PostMapping
-    public ResponseEntity<Volunteer> addNewVolunteer(@RequestBody Volunteer volunteer){
-        volunteerService.addVolunteer(volunteer);
-        return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
-    }
-
-    //update volunteer experience by id
+      //update volunteer experience by id
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Volunteer> updateVolunteer(@RequestBody Volunteer volunteer, @PathVariable Long id){
         volunteerService.updateVolunteer(volunteer, id);
@@ -61,12 +65,6 @@ public class VolunteerController {
         return new ResponseEntity<>(updateVolunteer.get(), HttpStatus.OK);
     }
 
-    //add volunteer to job
-    @PostMapping (value = "/{jobId}/{volunteerId}")
-    public ResponseEntity<String> applyToJob (@PathVariable Long jobId, @PathVariable Long volunteerId) {
-        volunteerService.applyToJob(jobId, volunteerId);
-        return new ResponseEntity<>("Application successful", HttpStatus.OK);
-    }
 
     //delete volunteer from job
     @DeleteMapping (value = "/{jobId}/{volunteerId}")

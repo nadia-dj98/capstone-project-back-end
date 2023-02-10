@@ -62,7 +62,7 @@ public class CharityController {
     }
 
 
-    //delete charity -> need to change method to id
+    //delete charity
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteCharity(@PathVariable long id) {
         charityService.deleteCharity(id);

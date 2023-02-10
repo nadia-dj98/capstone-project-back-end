@@ -17,9 +17,6 @@ import java.util.Optional;
 public class VolunteerService {
 
     @Autowired
-    CharityRepository charityRepository;
-
-    @Autowired
     VolunteerRepository volunteerRepository;
 
     @Autowired
@@ -43,18 +40,6 @@ public class VolunteerService {
         volunteerRepository.save(volunteerToUpdate);
     }
 
-    //TODO
-    //we want to remove volunteer item from volunteer array in job object
-    //access each individual job object
-    //loop through volunteer in volunteer array
-    //if volunteer id is found in array, delete item
-    //set volunteer array to new array
-    //repeat for each job object
-//    public void deleteVolunteer(Long volunteerId) {
-//        List<Job> jobs = jobRepository.findAll();
-//        for (int i = 0; i < jobs.size(); i++){
-//        }
-//    }
 
     public void deleteVolunteer(long volunteerId) {
         Volunteer volunteerToDelete = volunteerRepository.findById(volunteerId).get();
