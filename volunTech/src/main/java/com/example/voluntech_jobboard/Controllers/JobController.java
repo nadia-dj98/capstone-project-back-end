@@ -24,7 +24,7 @@ public class JobController {
             @RequestParam(required = false, value= "location")String location,
             @RequestParam(required = false, value = "role")String role){
         if (location != null) {
-    return new ResponseEntity<>(jobService.findByLocation(location), HttpStatus.OK);
+            return new ResponseEntity<>(jobService.findByLocation(location), HttpStatus.OK);
         }
         if (role !=null){
             return new ResponseEntity<>(jobService.findByRole(role), HttpStatus.OK);

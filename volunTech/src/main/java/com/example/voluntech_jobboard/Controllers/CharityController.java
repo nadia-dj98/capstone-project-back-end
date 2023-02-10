@@ -27,9 +27,13 @@ public class CharityController {
 
     //get all charities
     @GetMapping
-    public  ResponseEntity<List<Charity>> getAllCharities(){
-        List<Charity> allCharities = charityService.getAllCharities();
-        return new ResponseEntity<>(allCharities, HttpStatus.OK);
+    public  ResponseEntity<List<Charity>> getAllCharitiesOrFilterByCause(
+            @RequestParam(required = false, value = "charityCause")String charityCause){
+    if (charityCause != null)   {
+        return new ResponseEntity<>(charityService.findByCharityCause(charityCause), HttpStatus.OK);
+    }
+//    List<Charity> allCharities = charityService.getAllCharities();
+        return new ResponseEntity<>(charityService.getAllCharities(), HttpStatus.OK);
     }
 
     //create new charity

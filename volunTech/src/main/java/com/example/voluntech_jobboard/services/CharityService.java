@@ -61,4 +61,8 @@ public class CharityService {
         charityToUpdate.setCharityCause(charity.getCharityCause());
         charityRepository.save(charityToUpdate);
     }
+
+    public List<Charity> findByCharityCause(String charityCause) {
+        return charityRepository.findByCharityCauseContainingIgnoreCase(charityCause);
+    }
 }
