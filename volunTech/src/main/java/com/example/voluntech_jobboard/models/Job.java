@@ -53,13 +53,11 @@ public class Job {
         this.volunteers = new ArrayList<>();
     }
 
-
     public Job () {}
+
     public List<Volunteer> getVolunteers() {
         return volunteers;
     }
-
-
 
     public void setVolunteers(List<Volunteer> volunteers) {
         this.volunteers = volunteers;
