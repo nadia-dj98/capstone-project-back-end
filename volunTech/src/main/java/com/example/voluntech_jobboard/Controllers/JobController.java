@@ -18,16 +18,19 @@ public class JobController {
     @Autowired
     JobService jobService;
 
-    //Get all jobs
+    //Get job by location or get all jobs
     @GetMapping
-    public ResponseEntity<List<Job>> getAllJobsOrFilterByLocation(
-            @RequestParam(required = false, value= "location")String location){
+    public ResponseEntity<List<Job>> getAllJobsOrFilterByLocationOrFilterByRole(
+            @RequestParam(required = false, value= "location")String location,
+            @RequestParam(required = false, value = "role")String role){
         if (location != null) {
     return new ResponseEntity<>(jobService.findByLocation(location), HttpStatus.OK);
         }
+        if (role !=null){
+            return new ResponseEntity<>(jobService.findByRole(role), HttpStatus.OK);
+        }
         return new ResponseEntity<>(jobService.getAllJobs(), HttpStatus.OK);
     }
-
 
 
     //Get jobs by id

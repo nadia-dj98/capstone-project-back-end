@@ -46,6 +46,11 @@ public class JobService {
         jobToUpdate.setLocation(jobToUpdate.getLocation());
         jobRepository.save(jobToUpdate);
     }
-    public List<Job> findByLocation (String location)
-    { return jobRepository.findByLocationIgnoreCase(location);}
+    public List<Job> findByLocation (String location) {
+        return jobRepository.findByLocationIgnoreCase(location);
+    }
+
+    public List<Job> findByRole(String role){
+        return jobRepository.findByRoleIgnoreCase(role);
+    }
 }
