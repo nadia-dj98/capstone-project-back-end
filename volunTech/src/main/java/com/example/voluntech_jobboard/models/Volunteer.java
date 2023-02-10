@@ -68,11 +68,5 @@ public class Volunteer {
         this.jobs = jobs;
     }
 
-//    public void applyToJob(Job job){
-//        this.jobs.add(job);
-//    }
 
-    public void withdrawFromJob(Job job){
-        this.jobs.remove(job);
-    }
 }

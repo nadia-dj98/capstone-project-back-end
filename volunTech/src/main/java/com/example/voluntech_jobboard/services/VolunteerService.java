@@ -50,10 +50,19 @@ public class VolunteerService {
     //if volunteer id is found in array, delete item
     //set volunteer array to new array
     //repeat for each job object
-    public void deleteVolunteer(Long volunteerId) {
-        List<Job> jobs = jobRepository.findAll();
-        for (int i = 0; i < jobs.size(); i++){
+//    public void deleteVolunteer(Long volunteerId) {
+//        List<Job> jobs = jobRepository.findAll();
+//        for (int i = 0; i < jobs.size(); i++){
+//        }
+//    }
+
+    public void deleteVolunteer(long volunteerId) {
+        Volunteer volunteerToDelete = volunteerRepository.findById(volunteerId).get();
+        List<Job> listOfJobs = volunteerToDelete.getJobs();
+        for (Job job : listOfJobs) {
+            withdrawFromJob(job.getId(), volunteerId);
         }
+        volunteerRepository.delete(volunteerToDelete);
     }
 
     public void  applyToJob(Long jobId, Long volunteerId) {
@@ -73,6 +82,5 @@ public class VolunteerService {
         jobToApplyTo.setVolunteers(jobVolunteers);
         jobRepository.save(jobToApplyTo);
     }
-
 }
 
