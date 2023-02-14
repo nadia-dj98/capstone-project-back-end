@@ -36,6 +36,19 @@ public class CharityController {
         return new ResponseEntity<>(charityService.getAllCharities(), HttpStatus.OK);
     }
 
+    //get charity by id
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Charity>getCharityById(@PathVariable long id){
+        Optional<Charity> charity = charityService.getCharityById(id);
+        if (charity.isPresent()){
+            return new ResponseEntity<>(charity.get(), HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
     //create new charity
     @PostMapping
     public ResponseEntity<Charity> createNewCharity(@RequestBody Charity charity) {

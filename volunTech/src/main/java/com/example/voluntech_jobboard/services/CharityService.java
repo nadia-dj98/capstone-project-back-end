@@ -65,4 +65,8 @@ public class CharityService {
     public List<Charity> findByCharityCause(String charityCause) {
         return charityRepository.findByCharityCauseContainingIgnoreCase(charityCause);
     }
+
+    public Optional<Charity> getCharityById(Long id){
+        return charityRepository.findById(id);
+    }
 }
