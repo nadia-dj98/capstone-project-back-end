@@ -1,8 +1,10 @@
 package com.example.voluntech_jobboard.Controllers;
 
+import com.example.voluntech_jobboard.models.ApplicationDTO;
 import com.example.voluntech_jobboard.models.Job;
 import com.example.voluntech_jobboard.models.Volunteer;
 import com.example.voluntech_jobboard.services.JobService;
+import com.example.voluntech_jobboard.services.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,9 @@ public class JobController {
 
     @Autowired
     JobService jobService;
+
+    @Autowired
+    VolunteerService volunteerService;
 
     //Get job by location or get all jobs
     @GetMapping
@@ -44,6 +49,13 @@ public class JobController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+    //add volunteer to job (apply to job)
+    @PostMapping(value = "/{jobId}/apply")
+    public ResponseEntity<String> applyToJob (@RequestBody ApplicationDTO applicationDTO, @PathVariable Long jobId) {
+        volunteerService.applyToJob(applicationDTO.getJobId(), applicationDTO.getVolunteerId());
+        return new ResponseEntity<>("Application successful", HttpStatus.OK);
+    }
+
 
     //update job
     @PutMapping(value = "/{id}")

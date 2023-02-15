@@ -36,23 +36,23 @@ public class CharityService {
         return charityRepository.findById(id);
     }
 
-    public void addJob(ApplicationDTO applicationDTO){
-        Long charityId = applicationDTO.getCharityId();
-        Long jobId = applicationDTO.getJobId();
-        Charity charity = charityRepository.findById(charityId).get();
-        Job job = jobRepository.findById(jobId).get();
-        charity.addJob(job);
-        charityRepository.save(charity);
-    }
+//    public void addJob(ApplicationDTO applicationDTO){
+//        Long charityId = applicationDTO.getCharityId();
+//        Long jobId = applicationDTO.getJobId();
+//        Charity charity = charityRepository.findById(charityId).get();
+//        Job job = jobRepository.findById(jobId).get();
+//        charity.addJob(job);
+//        charityRepository.save(charity);
+//    }
 
-    public void removeJob(ApplicationDTO applicationDTO){
-        Long charityId = applicationDTO.getCharityId();
-        Long jobId = applicationDTO.getJobId();
-        Charity charity = charityRepository.findById(charityId).get();
-        Job job = jobRepository.findById(jobId).get();
-        charity.removeJob(job);
-        charityRepository.save(charity);
-    }
+//    public void removeJob(ApplicationDTO applicationDTO){
+//        Long charityId = applicationDTO.getCharityId();
+//        Long jobId = applicationDTO.getJobId();
+//        Charity charity = charityRepository.findById(charityId).get();
+//        Job job = jobRepository.findById(jobId).get();
+//        charity.removeJob(job);
+//        charityRepository.save(charity);
+//    }
 
     public void updateCharity(Charity charity, Long id){
         Charity charityToUpdate = charityRepository.findById(id).get();

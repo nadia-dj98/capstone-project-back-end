@@ -31,12 +31,6 @@ public class VolunteerController {
         return new ResponseEntity<>(volunteer, HttpStatus.CREATED);
     }
 
-    //add volunteer to job (apply to job)
-    @PostMapping (value = "/{jobId}/{volunteerId}")
-    public ResponseEntity<String> applyToJob (@PathVariable Long jobId, @PathVariable Long volunteerId) {
-        volunteerService.applyToJob(jobId, volunteerId);
-        return new ResponseEntity<>("Application successful", HttpStatus.OK);
-    }
 
     //get all volunteers
     @GetMapping
