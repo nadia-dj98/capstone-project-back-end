@@ -63,15 +63,15 @@ public class DataLoader implements ApplicationRunner {
         charityRepository.save(shelter);
 
         //jobs - Fatimah & Nadia
-        Job uxDesigner = new Job("UX Designer", "We're seeking a talented individual to join our team on a short project creating a new feature for our website", LocalDate.of(2023, 03, 25), LocalDate.of(2023, 04, 30),"remote", britishHeart);
+        Job uxDesigner = new Job("UX Designer", "We're seeking a talented individual to join our team on a short project creating a new feature for our website", LocalDate.of(2023, 03, 25), LocalDate.of(2023, 04, 30),"remote", harlesdenCommunity);
         Job frontEndDeveloper = new Job("Front-end Developer", "We're seeking a talented individual to revamp our website", LocalDate.of(2023, 04, 01), LocalDate.of(2023, 05, 30),"london", globalCancerConcern);
         Job backEndDeveloper = new Job("Back-end Developer", "We're seeking a talented individual to help us ", LocalDate.of(2023, 03, 25), LocalDate.of(2023, 04, 30),"Essex", enviroLove);
         Job productManager = new Job("Product Manager", "We're seeking a talented individual to join our team to help us refine our mvp", LocalDate.of(2023, 05, 25), LocalDate.of(2023, 06, 30),"Halifax", guideDogs);
         Job uiDesigner = new Job("UI Designer", "We are looking for a talented UI Designer to create amazing user experiences.", LocalDate.of(2023, 02, 14), LocalDate.of(2023, 02, 27), "London", guideDogs);
-        Job webDeveloper= new Job("Web Developer", "We are looking for an outstanding Web Developer to be responsible for the coding, innovative design and layout of our website.", LocalDate.of(2023, 02, 20), LocalDate.of(2023, 03, 10),"Glasgow", samaritans);
+        Job webDeveloper= new Job("Web Developer", "We are looking for an outstanding Web Developer to be responsible for the coding, innovative design and layout of our website.", LocalDate.of(2023, 02, 20), LocalDate.of(2023, 03, 10),"Glasgow", stoneBridgeFoodBank);
         Job dataScientist = new Job("Data Scientist", "We are looking for a Data Scientist to analyze large amounts of information to help.", LocalDate.of(2023, 03, 10), LocalDate.of(2023, 03, 20), "Cambridge", sightSavers);
-        Job javaDeveloper = new Job("Java Developer", "We are looking for a Java Developer with experience in building applications.",LocalDate.of(2023, 03, 23), LocalDate.of(2023, 03, 30), "Bristol", saveTheChildren);
-        Job fullStackDeveloper = new Job("Full Stack Developer", "We are looking for a Full Stack Developer to produce scalable software solution.", LocalDate.of(2023, 04, 07), LocalDate.of(2023, 04, 17), "Oxford", marieCurie);
+        Job javaDeveloper = new Job("Java Developer", "We are looking for a Java Developer with experience in building applications.",LocalDate.of(2023, 03, 23), LocalDate.of(2023, 03, 30), "Bristol", towerHamletsMentalHealth);
+        Job fullStackDeveloper = new Job("Full Stack Developer", "We are looking for a Full Stack Developer to produce scalable software solution.", LocalDate.of(2023, 04, 07), LocalDate.of(2023, 04, 17), "Oxford", brickLaneHelpTheChildren);
 
         jobRepository.save(uxDesigner);
         jobRepository.save(frontEndDeveloper);
