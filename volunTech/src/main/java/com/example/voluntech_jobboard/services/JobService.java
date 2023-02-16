@@ -8,6 +8,8 @@ import com.example.voluntech_jobboard.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,4 +55,13 @@ public class JobService {
     public List<Job> findByRole(String role){
         return jobRepository.findByRoleIgnoreCase(role);
     }
+
+
+    public int calculateJobDurationInMonths(long id){
+        Job job = jobRepository.findById(id).get();
+        LocalDate startDate = job.getStartDate();
+        LocalDate endDate = job.getEndDate();
+        return Period.between(startDate, endDate).getMonths();
+    }
 }
+
