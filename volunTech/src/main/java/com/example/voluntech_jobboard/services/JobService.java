@@ -57,11 +57,5 @@ public class JobService {
     }
 
 
-    public int calculateJobDurationInMonths(long id){
-        Job job = jobRepository.findById(id).get();
-        LocalDate startDate = job.getStartDate();
-        LocalDate endDate = job.getEndDate();
-        return Period.between(startDate, endDate).getMonths();
-    }
 }
 
