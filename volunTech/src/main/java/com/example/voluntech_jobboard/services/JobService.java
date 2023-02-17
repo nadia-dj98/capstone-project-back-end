@@ -49,11 +49,11 @@ public class JobService {
         jobRepository.save(jobToUpdate);
     }
     public List<Job> findByLocation (String location) {
-        return jobRepository.findByLocationIgnoreCase(location);
+        return jobRepository.findByLocationContainingIgnoreCase(location);
     }
 
     public List<Job> findByRole(String role){
-        return jobRepository.findByRoleIgnoreCase(role);
+        return jobRepository.findByRoleContainingIgnoreCase(role);
     }
 
 
